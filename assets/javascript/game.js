@@ -4,12 +4,15 @@ let $ = function (id) {
 }
 
 //global variable
-const words = ["afraid", "bat", "black", "autumn", "costume", "cowboy", "cowgirl", "cemetry", "candy", "cape", "carve", "clown", "cobweb", "cat", "dead", "death", "fear", "fall", "ghost", "gory", "grave", "halloween", "hat", "magic", "moonlight", "mummy", "monster", "mask", "night", "orange", "owl", "october", "party", "pumpkin", "pirate", "robot", "scare", "spider", "skeleton", "trick", "treats", "witch", "wizard", "web", "wand", "zombie"];
+const words = ["candy", "ghost", "grave", "halloween", "mummy", "pumpkin", "spider", "skeleton", "web", "zombie"];
 let word;
 let userInput = [];
 let userIndex = 0;
 let answerArray = [];
 let remainingLetters = word.length;
+let userGuess;
+let rightGuess = true
+let rightGuessIndex = []
 
 
 
@@ -27,6 +30,18 @@ function randomWord() {
 function showBlank() {
     for (i = 0; i < word.length; i++) {
         answerArray[i] = "_"
-        $("guess").innerHTML += answerArray[i] 
     }
+    $("guess").innerHTML = answerArray.join(" ")
+}
+
+//
+
+//check letter
+function checkLetter(char, str) {
+    for (let j = 0; j < str.length; j++) {
+        if (char === str) {
+            rightGuessIndex.push(j)
+        }
+    }
+    rightGuess = false
 }
