@@ -95,17 +95,26 @@ document.onkeyup = function(event) {
     if (rightGuess) {
         rightGuess = false
         if (matchLength()) {
+            let audio = new Audio('https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/win.mp3');
+            audio.play()
             wins++
             winsScore()
             initialGame()
+        } else {
+            let audio = new Audio('https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/goodbell.mp3');
+            audio.play()
         }
     } else {
         left--
         if (left < 1) {
+            let audio = new Audio('https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/lose.mp3');
+            audio.play()
             initialGame()
             losses++
             lossesScore()
         } else {
+            let audio = new Audio('https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/bad.mp3');
+            audio.play()
             wrongGuess(userGuess)
             guessesLeft()
         }
