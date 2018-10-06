@@ -8,7 +8,7 @@
     font-family: 'Londrina Solid', cursive;
 }
 
-.header-container {
+.main-container {
     width: 80%;
     text-align: center;
     margin: auto;
@@ -33,9 +33,24 @@ h1 {
 #guess {
     margin: auto;
     font-size: 36px;
-    margin-bottom: 30px;
+    margin-bottom: 80px;
 }
 
 .body-container {
     text-align: center;
+    width: 80%;
+}
+
+.size {
+    font-size: 28px;
+    text-align: left;
+    padding-left: 43%;
+    margin-bottom: 30px;
+}
+
+.sizeNumber {
+    font-size: 28px;
+    text-align: left;
+    margin-bottom: 30px;
+    padding-right: 30px;
 }

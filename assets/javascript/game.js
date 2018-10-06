@@ -4,20 +4,16 @@ let $ = function (id) {
 }
 
 //global variable
-const words = ["candy", "ghost", "grave", "halloween", "mummy", "pumpkin", "spider", "skeleton", "web", "zombie"];
+const words = ["candy", "ghost", "mummy", "pumpkin", "spider", "skeleton", "web", "zombie"];
 let word;
-let userInput = [];
-let userIndex = 0;
 let answerArray = [];
-let remainingLetters = word.length;
 let userGuess;
-let rightGuess = true
-let rightGuessIndex = []
-
-
-
-
-
+let rightGuess = true;
+let rightGuessWordIndex = [];
+let left = 9;
+let wins = 0;
+let losses = 0;
+// let remainingLetters = word.length;
 
 
 //random word
@@ -34,7 +30,42 @@ function showBlank() {
     $("guess").innerHTML = answerArray.join(" ")
 }
 
-//
+//guesses left
+function guessesLeft() {
+    $("left").innerHTML = left
+}
+
+//wins
+function winsScore() {
+    $("wins").innerHTML = wins
+}
+
+//losses
+function lossesScore() {
+    $("losses").innerHTML = losses
+}
+
+//show wrong guess
+function wrongGuess(char) {
+    $("wrong").innerHTML += char + ", "
+}
+
+// resent function
+function initialGame() {
+    left = 9;
+    answerArray = [];
+    $("wrong").innerHTML = "";
+    rightGuess = true;
+    rightGuessWordIndex = [];
+    guessesLeft()
+    showBlank()
+}
+
+// call initial function
+randomWord()
+initialGame()
+winsScore()
+lossesScore()
 
 //check letter
 function checkLetter(char, str) {
@@ -44,4 +75,15 @@ function checkLetter(char, str) {
         }
     }
     rightGuess = false
+}
+
+//user guess
+document.onkeyup = function(event) {
+    userGuess = event.key.toLowerCase();
+
+    checkLetter(userGuess,word)
+    
+    if (rightGuess) {
+        
+    }
 }
