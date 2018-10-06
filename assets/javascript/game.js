@@ -8,11 +8,12 @@ const words = ["candy", "ghost", "mummy", "pumpkin", "spider", "skeleton", "web"
 let word;
 let answerArray = [];
 let userGuess;
-let rightGuess = true;
-let rightGuessWordIndex = [];
+let rightGuess = false;
+let userRightGuess = 0;
 let left = 9;
 let wins = 0;
 let losses = 0;
+
 // let remainingLetters = word.length;
 
 
@@ -55,9 +56,9 @@ function initialGame() {
     left = 9;
     answerArray = [];
     $("wrong").innerHTML = "";
-    rightGuess = true;
-    rightGuessWordIndex = [];
+    rightGuess = false;
     guessesLeft()
+    randomWord()
     showBlank()
 }
 
@@ -68,22 +69,46 @@ winsScore()
 lossesScore()
 
 //check letter
-function checkLetter(char, str) {
+function showLetter(char, str) {
     for (let j = 0; j < str.length; j++) {
-        if (char === str) {
-            rightGuessIndex.push(j)
+        if (char === str[j]) {
+            rightGuess = true
+            answerArray.splice(j,1,char)
+            userRightGuess++
         }
     }
-    rightGuess = false
+    $("guess").innerHTML = answerArray.join(" ")
+}
+
+//check length
+let matchLength = function() {
+    if (word.length === userRightGuess) return true
+    else return false
 }
 
 //user guess
 document.onkeyup = function(event) {
     userGuess = event.key.toLowerCase();
 
-    checkLetter(userGuess,word)
+    showLetter(userGuess, word)
     
     if (rightGuess) {
-        
+        rightGuess = false
+        if (matchLength()) {
+            wins++
+            winsScore()
+            initialGame()
+        }
+    } else {
+        left--
+        if (left < 1) {
+            initialGame()
+            losses++
+            lossesScore()
+        } else {
+            wrongGuess(userGuess)
+            guessesLeft()
+        }
+
     }
 }
