@@ -1,3 +1,7 @@
+body {
+    background: #FFB03A;
+}
+
 #container {
     background-image:url(../images/background.png);
     background-repeat: no-repeat;
@@ -33,7 +37,7 @@ h1 {
 #guess {
     margin: auto;
     font-size: 36px;
-    margin-bottom: 80px;
+    margin-bottom: 45px;
 }
 
 .body-container {
@@ -53,4 +57,12 @@ h1 {
     text-align: left;
     margin-bottom: 30px;
     padding-right: 30px;
+}
+
+#img {
+    margin: 0 auto;
+}
+
+#winImage {
+    width:300px;
 }
