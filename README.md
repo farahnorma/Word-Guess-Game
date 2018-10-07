@@ -1,5 +1,6 @@
 # Word-Guess-Game
 JS assignment
+link: https://savinaxu.github.io/Word-Guess-Game/
 
 ## Option Two: Word Guess Game (Challenge - Recommended)
 
